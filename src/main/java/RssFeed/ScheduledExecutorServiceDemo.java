@@ -11,9 +11,10 @@ public class ScheduledExecutorServiceDemo {
 
 	public static void main(String[] args) {
 		
+		Object lock = new Object();
 		ScheduledExecutorService exec = Executors.newScheduledThreadPool(2);
-		exec.scheduleWithFixedDelay(new WriteRssFeed(), 0, 5, TimeUnit.SECONDS);
-		exec.scheduleWithFixedDelay(new ReadRssFeed(), 0, 8, TimeUnit.SECONDS);
+		exec.scheduleWithFixedDelay(new WriteRssFeed(lock), 0, 15, TimeUnit.SECONDS);
+		exec.scheduleWithFixedDelay(new ReadRssFeed(lock), 0, 20, TimeUnit.SECONDS);
 
 	}
 

@@ -10,10 +10,16 @@ import javax.xml.bind.Unmarshaller;
 
 public class WriteRssFeed implements Runnable{
 
+	private Object lock;
+	
+	public WriteRssFeed(Object lock)
+	{
+		this.lock = lock;
+	}
 	@Override
 	public void run() {
 		
-		Object lock = new Object();
+		
 		synchronized (lock) {
 			
 		try{

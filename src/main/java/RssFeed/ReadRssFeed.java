@@ -7,10 +7,15 @@ import java.io.IOException;
 
 public class ReadRssFeed implements Runnable{
 
+	private Object lock;
+	
+	public ReadRssFeed(Object lock) {
+		this.lock = lock;
+	}
+
 	@Override
 	public void run() {
 		
-		  Object lock = new Object();
 		  synchronized (lock) {
 			  
 			  File f1=new File("D:\\a.rss"); //Creation of File Descriptor for input file
